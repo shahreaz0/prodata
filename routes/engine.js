@@ -20,15 +20,37 @@ router.get("/", (req, res) => {
 // access 	public
 router.post("/parse", upload.single("jsonFile"), async (req, res) => {
 	try {
+		// read data from json
 		const data = await fs.readJson(req.file.path);
 
-		console.log(data);
+		// variables
+		let message = [];
+		let verdict;
 
+		// parse data and make send object
+		data.nodes.forEach((node, index) => {
+			verdict = node.conditions.every((condition) => {
+				if (condition.operator === ">=") {
+					return data.parameters[condition.name] >= condition.value;
+				} else if (condition.operator === ">") {
+					return data.parameters[condition.name] > condition.value;
+				} else if (condition.operator === "<") {
+					return data.parameters[condition.name] < condition.value;
+				} else if (condition.operator === "<=") {
+					return data.parameters[condition.name] <= condition.value;
+				} else if (condition.operator === "==") {
+					return data.parameters[condition.name] == condition.value;
+				}
+			});
+			message.push({ node: index + 1, result: verdict });
+		});
+
+		// remove json file
 		await fs.remove(req.file.path);
-
-		res.send({ message: "successful" });
+		// send respone
+		res.send({ message });
 	} catch (error) {
-		console.error(error);
+		res.status(500).send({ message: error.message });
 	}
 });
 
