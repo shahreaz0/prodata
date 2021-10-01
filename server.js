@@ -4,14 +4,7 @@ const express = require("express");
 const app = express();
 
 // routes
-app.get("/", (req, res) => {
-	console.log();
-	res.send({
-		message: "API is up and running",
-		url: req.url,
-		method: req.method,
-	});
-});
+app.use("/api", require("./routes/engine"));
 
 // server
 const PORT = process.env.PORT || 3000;
