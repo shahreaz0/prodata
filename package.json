@@ -1,10 +1,11 @@
 {
-  "name": "prodata",
+  "name": "prodata-app",
   "version": "1.0.0",
   "description": "Proccess json data",
   "main": "dist/app.js",
   "scripts": {
-    "build": "node esbuild.config.js"
+    "build": "node esbuild.config.js",
+    "test": "jest"
   },
   "author": "Shahreaz Bin Alam",
   "license": "ISC",
@@ -12,6 +13,7 @@
     "fs-extra": "^10.0.0"
   },
   "devDependencies": {
-    "esbuild": "^0.13.3"
+    "esbuild": "^0.13.3",
+    "jest": "^27.2.4"
   }
 }
