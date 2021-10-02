@@ -3,53 +3,34 @@
  1. If NodeJS not installed in your system. Install it from <a href="https://nodejs.org/en/download/" target="_blank">Here</a>.
  2. Clone the repository.
  3. Run command `npm i` in root folder to install dependencies.
- 4. Run command `npm run dev` in the root folder to start the server.
- 5. Go to the `http://localhost:3000`.
+ 4. Run command `npm run build` in the root folder to build.
+ 5. Run command `npm run test` in the root folder to test.
  6. That's it.
 
-## API endpoints 
-Development server `http://localhost:3000`
+## Installation
 
-**Engine routes**
-|Method | Route | Description | Access |
-| --|--|--|--|
-| GET |/api/ | Home route | Public |
-| POST |/api/parse | JSON data parser route | Public |
+    npm i prodata-app
 
+**Code Sample**
 
+    const { parseJsonFile } = require("prodata-app");
+    parseJsonFile("./files/demo.json").then((data) => console.log(data));
 
-## Inputs & Outputs
-*The input files are from [here](https://gist.github.com/ronakjain90/7ce135feada1f093c54ffde1370a9982)*
+## Functions
+There are two functions 
+ 
 
-**First input file**  `1.json`
-**The output**
+ - `parseJsonFile`
+ - `parseJsonString`
 
-    {
-    	"message": [
-    		{ 
-    			"node": 1,
-    			"result": true
-    		}
-    	]
-    }
+**ParseJsonFile()**
 
-**Second input file**  `2.json`
-**The output**
+ - @params 	: String. JSON file path
+ - @returns		: Promise. A JSON format text
+ - @type: 		: async
 
-    {
-    	"message": [
-    		{
-    			"node": 1,
-    			"result": false
-    		},
-    		{
-    			"node": 2,
-    			"result": false
-    		},
-    		{
-    			"node": 3,
-    			"result": true
-    		}
-    	]
-    }
+**ParseJsonString()**
 
+ - @params 	: String. JSON string
+ - @returns		: String. A JSON format text
+ - @type: 		: sync
