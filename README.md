@@ -14,7 +14,46 @@
 **Code Sample**
 
     const { parseJsonFile } = require("prodata-app");
-    parseJsonFile("./files/demo.json").then((data) => console.log(data));
+    parseJsonFile("./files/demo.json").then((res) => console.log(res));
+
+## Inputs & Outputs
+
+_The input files are from  [here](https://gist.github.com/ronakjain90/7ce135feada1f093c54ffde1370a9982)_
+
+**First input file**  `1.json`  **The output**
+
+```
+{
+	"message": [
+		{ 
+			"node": 1,
+			"result": true
+		}
+	]
+}
+
+```
+
+**Second input file**  `2.json`  **The output**
+
+```
+{
+	"message": [
+		{
+			"node": 1,
+			"result": false
+		},
+		{
+			"node": 2,
+			"result": false
+		},
+		{
+			"node": 3,
+			"result": true
+		}
+	]
+}
+```
 
 ## Functions
 There are two functions 
